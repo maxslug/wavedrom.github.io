@@ -28,10 +28,13 @@
   "devDependencies": {
     "@drom/eslint-config": "^0.10.0",
     "codemirror": "^5.63",
-    "eslint": "^2.13.1",
+    "eslint": "^8.37.0",
     "wavedrom": "^3.2.0"
   },
   "eslintConfig": {
     "extends": "@drom/eslint-config/eslint4/node4"
+  },
+  "dependencies": {
+    "tabulator-tables": "^5.4.4"
   }
 }

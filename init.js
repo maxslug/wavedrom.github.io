@@ -45,10 +45,10 @@
     function nodeWebkit () {
         // node-webkit detection
         val = localStorage.waveform;
-        if (val === undefined || val === '' || val === null) {
-            val = '{signal: [\n  {name: \'clk\', wave: \'p.....|...\'},\n  {name: \'dat\', wave: \'x.345x|=.x\', data: [\'head\', \'body\', \'tail\', \'data\']},\n  {name: \'req\', wave: \'0.1..0|1.0\'},\n  {},\n  {name: \'ack\', wave: \'1.....|01.\'}\n]}\n';
-            localStorage.waveform = val;
-        }
+//        if (val === undefined || val === '' || val === null) {
+//            val = '{signal: [\n  {name: \'clk\', wave: \'p.....|...\'},\n  {name: \'dat\', wave: \'x.345x|=.x\', data: [\'head\', \'body\', \'tail\', \'data\']},\n  {name: \'req\', wave: \'0.1..0|1.0\'},\n  {},\n  {name: \'ack\', wave: \'1.....|01.\'}\n]}\n';
+//            localStorage.waveform = val;
+//        }
 
         if (typeof process !== 'object') {
             return;
@@ -101,38 +101,39 @@
 
     e.value = val;
 
-    var cm = CodeMirror.fromTextArea(
-        e,
-        {
-            lineNumbers: true,
-            mode: {
-                name: 'javascript',
-                json: true
-            },
-            matchBrackets: true,
-            autoCloseBrackets: true,
-            highlightSelectionMatche: true,
-            autofocus: true
-        }
-    );
-    cm.on('change', function (cmm) {
-        function c () {
-            var v = cmm.getValue();
-            e.value = v;
-            var scroller = document.getElementById('SVGScroll');
-            var state = {
-                left: scroller.scrollLeft,
-                top: scroller.scrollTop
-            };
-            WaveDrom.EditorRefresh();
-            scroller.scrollTop = state.top;
-            scroller.scrollLeft = state.left;
-            localStorage.waveform = v;
-        }
-        setTimeout(c, 750);
-    });
-
-    WaveDrom.cm = cm;
+  //     TODO(maxslug) plumb codemirror back in
+//     var cm = CodeMirror.fromTextArea(
+//         e,
+//         {
+//             lineNumbers: true,
+//             mode: {
+//                 name: 'javascript',
+//                 json: true
+//             },
+//             matchBrackets: true,
+//             autoCloseBrackets: true,
+//             highlightSelectionMatche: true,
+//             autofocus: true
+//         }
+//     );
+//     cm.on('change', function (cmm) {
+//         function c () {
+//             var v = cmm.getValue();
+//             e.value = v;
+//             var scroller = document.getElementById('SVGScroll');
+//             var state = {
+//                 left: scroller.scrollLeft,
+//                 top: scroller.scrollTop
+//             };
+//             WaveDrom.EditorRefresh();
+//             scroller.scrollTop = state.top;
+//             scroller.scrollLeft = state.left;
+//             localStorage.waveform = v;
+//         }
+//         setTimeout(c, 750);
+//     });
+// 
+//     WaveDrom.cm = cm;
 
     window.addEventListener('load', () => {
         if ('serviceWorker' in navigator) {
